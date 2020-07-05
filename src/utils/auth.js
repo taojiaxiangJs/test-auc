@@ -1,9 +1,12 @@
-import Cookies from 'js-cookie'
+import { getCookies, setCookies } from './cookies'
 
-const TokenKey = 'User-Token'
-
-export const getToken = () => Cookies.get(TokenKey)
-
-export const setToken = (token) => Cookies.set(TokenKey, token)
-
-export const removeToken = () => Cookies.remove(TokenKey)
+export const getuserInfo = () => {
+	return new Promise((resolve, reject) => {
+		if(getCookies('token')){
+			setCookies('rolus',true)
+			resolve()
+		}else{
+			reject()
+		}
+	})
+}
